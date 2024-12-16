@@ -25,7 +25,7 @@ async def main_page(requests: Request) -> HTMLResponse:
 @app.get("/users/{user_id}")
 async def get_users(requests: Request, user_id: int) ->  HTMLResponse:
     try:
-        return templates.TemplateResponse("users.html", {"request":requests, "messages": users[user_id]})
+        return templates.TemplateResponse("users.html", {"request":requests, "messages": users[user_id -1]})
     except IndexError:
         raise HTTPException(status_code=404, datail="Message not found")
 
